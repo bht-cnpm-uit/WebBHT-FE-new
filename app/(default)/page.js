@@ -6,7 +6,7 @@ export default function Home() {
         <>
             {/* Hero section */}
             <div className="bg-bg px-p-body sm:px-0">
-                <div className="mx-auto flex max-w-container py-16 md:flex-col">
+                <div className="mx-auto flex max-w-container items-center py-16 md:flex-col">
                     {/* CONTENT */}
                     <HeroSection />
 

@@ -37,5 +37,5 @@ async function fetchData() {
 
 export default async function ImageSlide() {
     const slideImages = await fetchData();
-    return <ImageSlideClient slideImages={slideImages} />;
+    return <ImageSlideClient />;
 }
