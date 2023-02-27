@@ -24,9 +24,10 @@ async function fetchData() {
             }
         );
         const slideRes = await res.json();
-        const slideImages = slideRes?.results?.map((page) => ({
+        const slideImages = slideRes?.results?.map((page, index) => ({
             link: page?.properties?.link?.email || '',
-            image: getImageFromProperty(page?.properties?.images),
+            src: getImageFromProperty(page?.properties?.images),
+            id: index,
         }));
         return slideImages;
     } catch (err) {
@@ -37,5 +38,5 @@ async function fetchData() {
 
 export default async function ImageSlide() {
     const slideImages = await fetchData();
-    return <ImageSlideClient />;
+    return <ImageSlideClient slideImages={slideImages} />;
 }

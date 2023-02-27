@@ -40,7 +40,7 @@ async function fetchData() {
 export default async function HeroSection() {
     const heroHeadingAndDescription = await fetchData();
     return (
-        <div className="mr-7 w-1/2 space-y-6 md:w-full sm:px-p-body">
+        <div className="w-1/2 space-y-6 md:w-full sm:px-p-body">
             <div>
                 {/* HEADING */}
                 <h2
