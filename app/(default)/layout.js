@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '~/styles/globals.css';
 import Script from 'next/script';
+import PlatformGroup from '../components/PlatformGroup';
 
 export const metadata = {
     title: 'BAN HỌC TẬP ĐOÀN KHOA CÔNG NGHỆ PHẦN MỀM',
@@ -18,7 +19,7 @@ export default function RootLayout({ children }) {
             <Script src="./highlightTextScript.js" async />
             <body>
                 {/* <FacebookChatPlugin /> */}
-                <Header />
+                <Header platformGroup={<PlatformGroup />} />
                 <main className="pt-h-header">{children}</main>
                 <Footer />
             </body>

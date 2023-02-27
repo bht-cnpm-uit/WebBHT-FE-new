@@ -6,7 +6,6 @@ import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import NavLink from '../NavLink';
-import PlatformGroup from '../PlatformGroup';
 
 const MENU = [
     {
@@ -23,7 +22,7 @@ const MENU = [
     },
 ];
 
-export default function MobileMenu({ children }) {
+export default function MobileMenu({ platformGroup }) {
     const router = useRouter();
 
     const [openMenu, setOpenMennu] = useState(false);
@@ -72,7 +71,7 @@ export default function MobileMenu({ children }) {
                         ))}
                     </nav>
 
-                    <div className="mt-4 flex justify-center">{children}</div>
+                    <div className="mt-4 flex justify-center">{platformGroup}</div>
                 </div>
             </div>
         </div>
