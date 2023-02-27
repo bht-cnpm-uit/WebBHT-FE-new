@@ -1,0 +1,99 @@
+@layer components {
+    .btn {
+        @apply flex h-[2.25rem] items-center justify-center rounded px-4 font-medium transition-colors;
+    }
+    .btn.btn-contain {
+        @apply text-white;
+    }
+    .btn.btn-contain.btn-primary {
+        @apply relative z-[1] overflow-hidden;
+    }
+
+    .btn.btn-contain.btn-primary::before {
+        content: '';
+        @apply absolute left-0 top-0 bottom-0 z-[-1] w-[200%] bg-gradient-to-r from-primary via-primary-to to-primary transition-transform duration-300;
+    }
+
+    .btn.btn-contain.btn-primary:hover::before {
+        @apply -translate-x-1/2;
+    }
+
+    .btn.btn-outline.btn-primary {
+        @apply border-gradient hover:border-gradient-270 text-primary transition-all duration-300 hover:text-primary-to;
+    }
+
+    .btn.btn-lg {
+        @apply h-11 px-7;
+    }
+
+    .btn.btn-square.btn-md {
+        @apply w-[2.25rem] px-0;
+    }
+
+    .btn.btn-square.btn-lg {
+        @apply w-11 px-0;
+    }
+
+    .icon svg {
+        @apply h-full w-full fill-current stroke-current;
+    }
+
+    .heading-section {
+        @apply mx-auto max-w-5xl text-4xl font-bold text-text-dark;
+    }
+
+    @keyframes pageLoaderLoaded {
+        0% {
+            opacity: 1;
+            width: 100%;
+        }
+        100% {
+            opacity: 0;
+            width: 100%;
+        }
+    }
+    @keyframes pageLoaderLoading {
+        0% {
+            width: 0px;
+            opacity: 1;
+        }
+        20% {
+            width: 70%;
+            opacity: 1;
+        }
+        100% {
+            width: 90%;
+            opacity: 1;
+        }
+    }
+    .loading-bar.loading {
+        animation-name: pageLoaderLoading;
+        animation-duration: 4s;
+        animation-fill-mode: forwards;
+    }
+
+    .loading-bar.loaded {
+        animation-name: pageLoaderLoaded;
+        animation-duration: 2s;
+    }
+
+    .border-gradient {
+        border: 2px solid transparent;
+        background: linear-gradient(rgb(var(--clr-bg)), rgb(var(--clr-bg))) padding-box padding-box,
+            linear-gradient(90deg, rgb(var(--clr-primary)), rgb(var(--clr-primary-to))) border-box border-box;
+    }
+
+    .border-gradient-270 {
+        border: 2px solid transparent;
+        background: linear-gradient(rgb(var(--clr-bg)), rgb(var(--clr-bg))) padding-box padding-box,
+            linear-gradient(270deg, rgb(var(--clr-primary)), rgb(var(--clr-primary-to))) border-box border-box;
+    }
+
+    gradient-text,
+    .gradient-text {
+        -webkit-text-fill-color: transparent;
+        @apply bg-gradient-to-r from-primary to-primary-to;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+}

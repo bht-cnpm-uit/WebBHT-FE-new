@@ -1,0 +1,91 @@
+@layer base {
+    :root {
+        --clr-primary: 63, 158, 255;
+        --clr-primary-to: 182, 115, 248;
+        --clr-secondary: 255, 81, 47;
+        --clr-secondary-to: 240, 150, 26;
+
+        --clr-text-dark: 31, 36, 40;
+        --clr-text-semidark: 58, 69, 86;
+        --clr-text: 91, 100, 120;
+        --clr-text-light: 163, 178, 188;
+
+        --clr-bg-dark: 228, 240, 253;
+        --clr-bg: 245, 249, 255;
+        --clr-bg-light: 255, 255, 255;
+
+        --h-header: 64px;
+        --p-body: 2.75rem;
+        --max-container: 83rem;
+    }
+
+    @screen md {
+        :root {
+            --p-body: 1.75rem;
+            --max-container: 75rem;
+        }
+    }
+    @screen sm {
+        :root {
+            --p-body: 1.25rem;
+        }
+    }
+    @screen xs {
+        :root {
+            --p-body: 0.75rem;
+        }
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-size-adjust: 100%;
+        overflow-x: hidden;
+        @apply bg-bg text-text;
+    }
+    @supports (font-variation-settings: normal) {
+        body {
+            font-family: 'Inter var', 'Segoe UI', sans-serif;
+        }
+    }
+
+    * {
+        @apply focus-within:outline-none focus:outline-none focus-visible:outline-none;
+        @apply caret-primary;
+    }
+
+    ::-moz-selection {
+        color: white;
+        background: rgb(var(--clr-primary));
+    }
+    ::selection {
+        color: white;
+        background: rgb(var(--clr-primary));
+    }
+    input {
+        outline: none;
+    }
+    a {
+        display: inline-block;
+    }
+}
+
+.dark {
+    --clr-primary: 63, 158, 255;
+    --clr-primary-to: 182, 115, 248;
+    --clr-secondary: 255, 81, 47;
+    --clr-secondary-to: 240, 150, 26;
+
+    --clr-text-dark: 255, 255, 255;
+    --clr-text-semidark: 208, 223, 255;
+    --clr-text: 163, 179, 188;
+    --clr-text-light: 107, 112, 123;
+
+    --clr-bg-dark: 0, 0, 0;
+    --clr-bg: 13, 17, 23;
+    --clr-bg-light: 22, 27, 34;
+}
