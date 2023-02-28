@@ -1,6 +1,5 @@
-import clsx from 'clsx';
-import ParseNotionPageContent from '~/app/components/ParseNotionPageContent';
 import { getImageFromProperty } from '~/utils/notionTool';
+import ActivitySectionClient from './ActivitySectionClient';
 
 async function fetchData() {
     try {
@@ -55,46 +54,5 @@ async function fetchData() {
 
 export default async function ActivitySection() {
     const activities = await fetchData();
-    return (
-        <div className="px-p-body py-10 xs:px-0">
-            <div className="mx-auto max-w-container xs:max-w-none">
-                <header className="w-full text-center">
-                    <h2
-                        className="heading-section"
-                        dangerouslySetInnerHTML={{
-                            __html: 'Hoạt động nổi bật của <gradient-text>Ban học tập</gradient-text>',
-                        }}
-                    ></h2>
-                </header>
-                <div className="mt-16 space-y-20">
-                    {activities?.map((activity, index) => (
-                        <div
-                            key={index}
-                            className={clsx('flex sm:my-14 sm:flex-col', {
-                                'flex-row-reverse sm:flex-col': index % 2 !== 0,
-                            })}
-                        >
-                            <div className="w-2/5 sm:mb-4 sm:w-full">
-                                <img
-                                    src={activity.image}
-                                    className="aspect-[3/2] w-full rounded-lg object-cover md:aspect-square sm:aspect-video xs:rounded-none"
-                                />
-                            </div>
-                            <div
-                                className={clsx('flex-1 space-y-2 xs:px-p-body', {
-                                    'mr-8 md:mr-4 sm:mr-0': index % 2 !== 0,
-                                    'ml-8 md:ml-4 sm:ml-0': index % 2 === 0,
-                                })}
-                            >
-                                <h3 className="mb-3 text-2xl font-bold text-primary">{activity.heading}</h3>
-                                <div className="text-lg md:text-base">
-                                    <ParseNotionPageContent>{activity.content}</ParseNotionPageContent>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
+    return <ActivitySectionClient activities={activities} />;
 }

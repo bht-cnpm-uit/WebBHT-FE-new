@@ -105,7 +105,7 @@ export default function ImageSlideClient({ slideImages }) {
             className="relative z-[1] h-[420px] w-1/2 pl-10 lg:pl-0"
             initial={{ x: 300, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ type: 'spring', duration: 1, delay: 0.2 }}
+            transition={{ type: 'spring', duration: 1 }}
             viewport={{ once: false }}
         >
             {images
