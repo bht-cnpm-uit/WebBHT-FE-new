@@ -1,11 +1,32 @@
 'use client';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+const IMAGES = [
+    {
+        id: 1,
+        src: 'https://plus.unsplash.com/premium_photo-1666900050405-c6b2d1cc94df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80',
+    },
+    {
+        id: 2,
+        src: 'https://plus.unsplash.com/premium_photo-1666899830344-f7f226af458f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    },
+    {
+        id: 3,
+        src: 'https://plus.unsplash.com/premium_photo-1669833449026-124965aa4d26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+    },
+    {
+        id: 4,
+        src: 'https://plus.unsplash.com/premium_photo-1666899830344-f7f226af458f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    },
+    {
+        id: 5,
+        src: 'https://plus.unsplash.com/premium_photo-1669833449026-124965aa4d26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+    },
+];
 
 export default function ImageSlideClient({ slideImages }) {
-    const [images, setImages] = useState(slideImages);
+    const [images, setImages] = useState(IMAGES);
     const [hover, setHover] = useState(false);
     const classes = [
         {
