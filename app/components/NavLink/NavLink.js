@@ -1,5 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 function NavLink({ href, exact = true, children, ...props }) {
@@ -12,7 +13,7 @@ function NavLink({ href, exact = true, children, ...props }) {
 
     return (
         <Link href={href} {...props}>
-            {children}
+            {typeof children === 'function' ? children({ isActive }) : children}
         </Link>
     );
 }
