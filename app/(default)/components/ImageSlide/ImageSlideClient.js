@@ -1,6 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export default function ImageSlideClient({ slideImages }) {
     const [images, setImages] = useState(slideImages);
@@ -98,7 +100,15 @@ export default function ImageSlideClient({ slideImages }) {
                             onMouseLeave={() => index == 0 && setHover(false)}
                         >
                             <div className={classes[indexData].overlay}></div>
+                            {/* <LazyLoadImage
+                                alt={'fadsf'}
+                                height={420}
+                                width={370}
+                                effect="blur"
+                                src={images[indexData]?.src} // use normal <img> attributes as props
+                            /> */}
                             <img src={images[indexData]?.src} className="h-full w-full object-cover" />
+                            {/* <Image src={images[indexData]?.src} height={420} width={370} placeholder="blur" /> */}
                         </motion.div>
                     );
                 })
