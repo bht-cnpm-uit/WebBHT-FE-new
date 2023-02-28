@@ -101,7 +101,13 @@ export default function ImageSlideClient({ slideImages }) {
     }
 
     return (
-        <div className="relative z-[1] h-[420px] w-1/2 pl-10 lg:pl-0">
+        <motion.div
+            className="relative z-[1] h-[420px] w-1/2 pl-10 lg:pl-0"
+            initial={{ x: 300, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ type: 'spring', duration: 1, delay: 0.2 }}
+            viewport={{ once: false }}
+        >
             {images
                 .map((image, index) => {
                     const indexData = index <= 2 ? index : 3;
@@ -161,6 +167,6 @@ export default function ImageSlideClient({ slideImages }) {
                     </svg>
                 </button>
             </div>
-        </div>
+        </motion.div>
     );
 }
