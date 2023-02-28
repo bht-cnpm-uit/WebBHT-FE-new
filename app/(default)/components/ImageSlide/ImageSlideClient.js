@@ -103,7 +103,7 @@ export default function ImageSlideClient({ slideImages }) {
     return (
         <motion.div
             className="relative z-[1] h-[420px] w-1/2 pl-10 lg:pl-0 md:hidden"
-            initial={{ x: 300, opacity: 0 }}
+            initial={{ x: 100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ type: 'spring', duration: 1 }}
             viewport={{ once: false }}

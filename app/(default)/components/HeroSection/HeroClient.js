@@ -6,7 +6,7 @@ export default function HeroClient({ heroHeadingAndDescription, buttonInHero }) 
     return (
         <motion.div
             className="w-1/2 space-y-6 md:w-full sm:px-p-body"
-            initial={{ x: -300, opacity: 0 }}
+            initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ type: 'spring', duration: 1, delay: 0.2 }}
             viewport={{ once: false }}
