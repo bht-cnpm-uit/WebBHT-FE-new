@@ -14,7 +14,8 @@
         --clr-bg: 245, 249, 255;
         --clr-bg-light: 255, 255, 255;
 
-        --h-header: 64px;
+        --h-header: 90px;
+        --h-header-small: 64px;
         --p-body: 2.75rem;
         --max-container: 83rem;
     }
