@@ -18,6 +18,7 @@
         --h-header-small: 64px;
         --p-body: 2.75rem;
         --max-container: 83rem;
+        overflow-x: hidden;
     }
 
     @screen md {
