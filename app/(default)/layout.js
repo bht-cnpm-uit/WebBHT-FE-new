@@ -17,10 +17,10 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <Script src="./highlightTextScript.js" async />
-            <body>
+            <body className="w-screen overflow-x-hidden">
                 {/* <FacebookChatPlugin /> */}
                 <Header platformGroup={<PlatformGroup />} />
-                <main className="pt-h-header">{children}</main>
+                <main className="w-full pt-h-header">{children}</main>
                 <Footer />
             </body>
         </html>
