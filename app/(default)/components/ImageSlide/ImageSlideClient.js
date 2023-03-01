@@ -5,22 +5,27 @@ import { useEffect, useState } from 'react';
 const IMAGES = [
     {
         id: 1,
+        link: 'https://google.com',
         src: 'https://plus.unsplash.com/premium_photo-1666900050405-c6b2d1cc94df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80',
     },
     {
         id: 2,
+        link: 'https://google.com',
         src: 'https://plus.unsplash.com/premium_photo-1666899830344-f7f226af458f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     },
     {
         id: 3,
+        link: 'https://google.com',
         src: 'https://plus.unsplash.com/premium_photo-1669833449026-124965aa4d26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     },
     {
         id: 4,
+        link: 'https://google.com',
         src: 'https://plus.unsplash.com/premium_photo-1666899830344-f7f226af458f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     },
     {
         id: 5,
+        link: 'https://google.com',
         src: 'https://plus.unsplash.com/premium_photo-1669833449026-124965aa4d26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     },
 ];
@@ -30,19 +35,19 @@ export default function ImageSlideClient({ slideImages }) {
     const [hover, setHover] = useState(false);
     const classes = [
         {
-            wrapper: 'absolute h-[420px] w-[370px] overflow-hidden rounded-2xl',
+            wrapper: 'absolute block h-[420px] w-[370px] overflow-hidden rounded-2xl',
             overlay: 'absolute inset-0 bg-bg opacity-0',
         },
         {
-            wrapper: 'absolute h-[356px] w-[314px] overflow-hidden rounded-2xl hover:cursor-pointer ',
+            wrapper: 'absolute block h-[356px] w-[314px] overflow-hidden rounded-2xl hover:cursor-pointer ',
             overlay: 'absolute inset-0 bg-bg hover:opacity-0 transition-opacity opacity-30',
         },
         {
-            wrapper: 'absolute h-[300px] w-[264px] overflow-hidden rounded-2xl hover:cursor-pointer ',
+            wrapper: 'absolute block h-[300px] w-[264px] overflow-hidden rounded-2xl hover:cursor-pointer ',
             overlay: 'absolute inset-0 bg-bg hover:opacity-0 transition-opacity opacity-50',
         },
         {
-            wrapper: 'absolute h-[230px] w-[202px] overflow-hidden rounded-2xl hover:cursor-pointer ',
+            wrapper: 'absolute block h-[230px] w-[202px] overflow-hidden rounded-2xl hover:cursor-pointer ',
             overlay: 'absolute inset-0 bg-bg hover:opacity-0 transition-opacity opacity-70',
         },
     ];
@@ -126,7 +131,16 @@ export default function ImageSlideClient({ slideImages }) {
                             onMouseEnter={() => index == 0 && setHover(true)}
                             onMouseLeave={() => index == 0 && setHover(false)}
                         >
-                            <div className={classes[indexData].overlay}></div>
+                            {index === 0 ? (
+                                <a
+                                    href={image?.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={classes[indexData].overlay}
+                                ></a>
+                            ) : (
+                                <div className={classes[indexData].overlay}></div>
+                            )}
                             {/* <LazyLoadImage
                                 alt={'fadsf'}
                                 height={420}
