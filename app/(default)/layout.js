@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '~/styles/globals.css';
 import Script from 'next/script';
+import GotoTopButton from '../components/GotoTopButton';
 
 export const metadata = {
     title: 'BAN HỌC TẬP ĐOÀN KHOA CÔNG NGHỆ PHẦN MỀM',
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
                 <Header />
                 <main className="w-full pt-h-header md:pt-h-header-small">{children}</main>
                 <Footer />
+                <GotoTopButton />
             </body>
         </html>
     );

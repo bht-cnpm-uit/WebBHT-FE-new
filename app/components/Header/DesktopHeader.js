@@ -43,7 +43,7 @@ export default function DesktopHeader({ platformGroup, nav }) {
                     'shadow-lg shadow-gray-600/5 dark:shadow-gray-500/5': !isInTop,
                 }
             )}
-            initial="visible"
+            // initial="visible"
             // animate={controls}
             // transition={{ duration: 0.2 }}
             // variants={{
