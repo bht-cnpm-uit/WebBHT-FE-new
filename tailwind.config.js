@@ -6,6 +6,7 @@ module.exports = {
         extend: {
             spacing: {
                 'h-header': 'var(--h-header)',
+                'h-header-small': 'var(--h-header-small)',
                 'p-body': 'var(--p-body)',
             },
             maxWidth: {

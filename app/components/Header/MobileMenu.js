@@ -1,39 +1,40 @@
 'use client';
 
 import clsx from 'clsx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import NavLink from '../NavLink';
+import { usePathname } from 'next/navigation';
 
-const MENU = [
-    {
-        href: '/',
-        content: 'Trang chủ',
-    },
-    {
-        href: '/about',
-        content: 'Giới thiệu',
-    },
-    {
-        href: '/document',
-        content: 'Tài liệu',
-    },
-];
-
-export default function MobileMenu({ platformGroup }) {
-    const router = useRouter();
+export default function MobileMenu({ platformGroup, nav }) {
+    const pathName = usePathname();
 
     const [openMenu, setOpenMennu] = useState(false);
     useEffect(() => {
         setOpenMennu(false);
-    }, [router.asPath]);
+    }, [pathName]);
 
     return (
-        <div className="hidden md:inline-block">
+        <div className="flex items-center">
             <button onClick={() => setOpenMennu(true)}>
-                <FontAwesomeIcon icon={faBars} className="h-5 w-5 text-primary" />
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    className="h-8 w-8"
+                >
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor="rgb(var(--clr-primary))" />
+                            <stop offset="100%" stopColor="rgb(var(--clr-primary-to))" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        stroke="url(#gradient)"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    />
+                </svg>
             </button>
 
             <div className="fixed top-0 left-0">
@@ -48,28 +49,30 @@ export default function MobileMenu({ platformGroup }) {
                 {/* WHITE FRAME */}
                 <div
                     className={clsx(
-                        'absolute flex h-screen min-w-[28rem]  flex-col bg-bg transition duration-300 xs:min-w-[15rem]',
+                        'absolute flex h-screen min-w-[400px] flex-col bg-bg transition duration-300 xs:w-screen xs:min-w-0',
                         {
                             '-translate-x-full': !openMenu,
                         }
                     )}
                 >
-                    <button className="inline-block" onClick={() => setOpenMennu(false)}>
-                        <FontAwesomeIcon icon={faXmark} className="absolute top-2 right-2 h-6 w-6" />
+                    <button
+                        className="absolute top-3 right-3 inline-block text-primary"
+                        onClick={() => setOpenMennu(false)}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="h-8 w-8"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
                     </button>
 
                     {/* NAV */}
-                    <nav className="mt-h-header flex flex-col">
-                        {MENU.map((menu, index) => (
-                            <NavLink
-                                key={index}
-                                href={menu.href}
-                                className="w-full px-3 py-2 text-center font-semibold hover:text-primary [&.active]:text-primary"
-                            >
-                                {menu.content}
-                            </NavLink>
-                        ))}
-                    </nav>
+                    {nav}
 
                     <div className="mt-4 flex justify-center">{platformGroup}</div>
                 </div>

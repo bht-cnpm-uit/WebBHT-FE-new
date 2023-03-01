@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useMotionValueEvent, motion, useScroll, useTransform, useAnimationControls } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
-export default function HeaderDesktop({ platformGroup, nav }) {
+export default function DesktopHeader({ platformGroup, nav }) {
     const [isInTop, setIsInTop] = useState(true);
     const { scrollY } = useScroll();
 
@@ -40,7 +40,7 @@ export default function HeaderDesktop({ platformGroup, nav }) {
             className={clsx(
                 'fixed top-0 z-header flex w-full items-center justify-between bg-bg px-p-body transition-shadow duration-300 md:hidden',
                 {
-                    'border-gray-200 shadow-lg shadow-gray-600/5 dark:shadow-gray-500/5': !isInTop,
+                    'shadow-lg shadow-gray-600/5 dark:shadow-gray-500/5': !isInTop,
                 }
             )}
             initial="visible"
@@ -55,7 +55,7 @@ export default function HeaderDesktop({ platformGroup, nav }) {
             }}
         >
             {/* LOGO */}
-            <div className="flex flex-1 items-center md:flex-initial">
+            <div className="flex flex-1 items-center">
                 <Link href="/" className="inline-block h-full">
                     <motion.img src="/images/logo.png" className="w-auto" alt="logo" style={{ height: logoHeight }} />
                 </Link>
