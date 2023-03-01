@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <Script src="./highlightTextScript.js" async />
-            <body className="w-full">
+            <body className="w-full overflow-hidden">
                 {/* <FacebookChatPlugin /> */}
                 <Header />
                 <main className="w-full pt-h-header md:pt-h-header-small">{children}</main>
