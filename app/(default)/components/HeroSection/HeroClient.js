@@ -9,7 +9,7 @@ export default function HeroClient({ heroHeadingAndDescription, buttonInHero }) 
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ type: 'spring', duration: 1, delay: 0.2 }}
-            viewport={{ once: false }}
+            viewport={{ once: false, margin: '0px 0px 100px 0px' }}
         >
             <div>
                 {/* HEADING */}

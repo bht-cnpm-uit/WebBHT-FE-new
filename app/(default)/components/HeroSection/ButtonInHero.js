@@ -35,9 +35,9 @@ async function fetchData() {
 export default async function ButtonInHero() {
     const buttonInHeros = await fetchData();
     return (
-        <div className="flex space-x-3">
+        <div className="flex space-x-3 xs:flex-col xs:space-x-0 xs:space-y-3">
             {buttonInHeros?.map((btn, index) => (
-                <Button key={index} href={btn?.link || '/'} lg outline={btn.outline}>
+                <Button key={index} href={btn?.link || '/'} lg outline={btn.outline} className="sx:w-full">
                     {btn.name}
                 </Button>
             ))}

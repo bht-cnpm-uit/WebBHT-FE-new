@@ -23,7 +23,7 @@
     }
 
     .btn.btn-lg {
-        @apply h-11 px-7;
+        @apply h-11 px-7 xs:h-10;
     }
 
     .btn.btn-square.btn-md {
