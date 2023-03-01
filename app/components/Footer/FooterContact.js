@@ -25,7 +25,7 @@ async function fetchData() {
         return contacts;
     } catch (error) {
         console.log(error);
-        return '';
+        return [];
     }
 }
 

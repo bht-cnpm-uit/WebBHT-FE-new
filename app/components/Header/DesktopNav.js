@@ -1,59 +1,37 @@
-'use client';
+import DesktopNavClient from './DesktopNavClient';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import NavLink from '../NavLink';
-
-const MENU = [
-    {
-        href: '/',
-        content: 'Trang chủ',
-    },
-    {
-        href: '/about',
-        content: 'Giới thiệu',
-    },
-    {
-        href: '/document',
-        content: 'Tài liệu',
-    },
-];
-
-export default function DesktopNav() {
-    const [hover, setHover] = useState(-1);
-
-    function handleHover(index) {
-        setHover(index);
+async function fetchData() {
+    try {
+        const res = await fetch(`${process.env.NOTION_API}/databases/${process.env.NAV_DB_ID}/query`, {
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer ' + process.env.NOTION_TOKEN,
+                'Content-Type': 'application/json',
+                'Notion-Version': process.env.NOTION_VERSION,
+            },
+            body: JSON.stringify({
+                sorts: [
+                    {
+                        property: 'index',
+                        direction: 'ascending',
+                    },
+                ],
+            }),
+            next: { revalidate: 5 },
+        });
+        const data = await res.json();
+        const nav = data?.results?.map((page) => ({
+            name: page?.properties?.name?.title?.[0]?.plain_text || null,
+            link: page?.properties?.link?.email || '/',
+        }));
+        return nav;
+    } catch (error) {
+        console.log(error);
+        return [];
     }
-    function handleLeave(index) {
-        if (hover === index) {
-            setHover(-1);
-        }
-    }
+}
 
-    return (
-        <nav className="md:hidden">
-            {MENU.map((menu, index) => (
-                <NavLink
-                    key={index}
-                    href={menu.href}
-                    className="relative px-3 py-2 font-semibold text-text-semidark hover:text-primary [&.active]:text-primary"
-                    onMouseEnter={() => handleHover(index)}
-                    onMouseLeave={() => handleLeave(index)}
-                >
-                    {({ isActive }) => (
-                        <>
-                            <span>{menu.content}</span>
-                            {((isActive && hover === -1) || hover === index) && (
-                                <motion.div
-                                    layoutId="underline"
-                                    className="absolute bottom-0 left-5 right-5 h-0.5 rounded-full bg-gradient-to-r from-primary to-primary-to"
-                                ></motion.div>
-                            )}
-                        </>
-                    )}
-                </NavLink>
-            ))}
-        </nav>
-    );
+export default async function DesktopNav() {
+    const nav = await fetchData();
+    return <DesktopNavClient nav={nav} />;
 }
