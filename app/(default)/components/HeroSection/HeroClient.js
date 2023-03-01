@@ -24,8 +24,12 @@ export default function HeroClient({ heroHeadingAndDescription, buttonInHero }) 
                 </div> */}
             </div>
             {/* DESCIPTION */}
-            <div>
-                <ParseNotionPageContent>{heroHeadingAndDescription.description || []}</ParseNotionPageContent>
+            <div className="text-lg xs:text-base">
+                {/* <ParseNotionPageContent>{heroHeadingAndDescription.description || []}</ParseNotionPageContent> */}
+                <p>
+                    Được thành lập vào 02/11/2015, Ban học tập Đoàn khoa Công nghệ Phần mềm là nơi để chia sẻ kiến thức,
+                    là điểm đến cho các bạn sinh viên có thể tìm kiếm tài liệu cũng như trau dồi thêm kỹ năng cần thiết.
+                </p>
             </div>
 
             {buttonInHero}
