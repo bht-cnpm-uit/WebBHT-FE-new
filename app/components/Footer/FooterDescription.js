@@ -24,7 +24,7 @@ async function fetchData() {
 export default async function FooterDescription() {
     const description = await fetchData();
     return (
-        <div className="mr-4 flex max-w-[50%] flex-col md:mb-8 md:mr-0 md:max-w-full md:items-center md:text-center">
+        <div className="mr-4 flex flex-1 flex-col xs:mr-0 xs:items-center xs:text-center">
             <img src="/images/logo.png" className="h-9 w-9" />
             <div className="mt-2">
                 {/* FETCH FORM NOTION */}

@@ -32,9 +32,9 @@ async function fetchData() {
 export default async function FooterContact() {
     const contacts = await fetchData();
     return (
-        <div className="md:text-center">
-            <p className="font-bold">Liên hệ</p>
-            <div className="mt-1">
+        <div className="flex min-w-[200px] flex-col md:mt-8 xs:items-center">
+            <p className="text-lg font-bold text-text-semidark">Liên hệ</p>
+            <div className="mt-1 flex flex-col xs:text-center">
                 {contacts?.map((contact, index) =>
                     contact.link ? (
                         <a key={index} href={contact.link} className="block py-1 hover:text-primary">
