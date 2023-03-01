@@ -10,6 +10,15 @@ import Script from 'next/script';
 export const metadata = {
     title: 'BAN HỌC TẬP ĐOÀN KHOA CÔNG NGHỆ PHẦN MỀM',
     description: 'BAN HỌC TẬP ĐOÀN KHOA CÔNG NGHỆ PHẦN MỀM',
+    icons: {
+        icon: '/favicon.ico',
+        shortcut: '/favicon.ico',
+        apple: '/favicon.ico',
+        other: {
+            rel: 'apple-touch-icon-precomposed',
+            url: '/favicon.ico',
+        },
+    },
 };
 
 export default function RootLayout({ children }) {
