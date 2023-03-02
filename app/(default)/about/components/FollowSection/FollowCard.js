@@ -15,7 +15,7 @@ export default function FollowCard({ followInPlatform }) {
             target="_blank"
             rel="noopener noreferrer"
             href={followInPlatform.link}
-            className="m-4 max-w-[310px] rounded-2xl bg-bg-light from-primary/10 to-primary-to/10 p-8 hover:bg-gradient-to-br sm:max-w-full"
+            className="m-3 max-w-[310px] rounded-2xl bg-bg-light from-primary/10 to-primary-to/10 p-8 hover:bg-gradient-to-br sm:max-w-full"
             variants={item}
         >
             <div

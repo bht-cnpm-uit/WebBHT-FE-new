@@ -39,7 +39,7 @@
     }
 
     .heading-section {
-        @apply mx-auto max-w-5xl text-4xl font-bold text-text-dark;
+        @apply mx-auto mb-4 max-w-5xl text-4xl font-bold text-text-dark;
     }
 
     @keyframes pageLoaderLoaded {

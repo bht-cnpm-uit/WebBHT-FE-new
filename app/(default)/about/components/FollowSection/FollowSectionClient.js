@@ -14,36 +14,37 @@ const container = {
     },
 };
 
-export default function FollowSectionClient({ followInPlatforms }) {
+export default function FollowSectionClient({ followInPlatforms, heading }) {
     return (
         <div className="overflow-hidden px-p-body py-10">
-            <motion.div
-                className="mx-auto max-w-container xs:max-w-none"
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ type: 'spring', duration: 1 }}
-                viewport={{ margin: '0px 0px 50px 0px' }}
-            >
-                <header className="w-full text-center">
+            <div className="mx-auto max-w-container xs:max-w-none">
+                <motion.header
+                    className="w-full text-center"
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ type: 'spring', duration: 1 }}
+                    viewport={{ margin: '0px 0px 50px 0px' }}
+                >
                     <h2
                         className="heading-section"
                         dangerouslySetInnerHTML={{
-                            __html: 'Theo dõi <gradient-text>Ban học tập</gradient-text> trên các nền tảng, mạng xã hội',
+                            __html: heading.heading,
                         }}
                     ></h2>
-                </header>
-            </motion.div>
-            <motion.div
-                className="my-9 -mx-4 flex flex-wrap justify-center xs:mx-0"
-                variants={container}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ margin: '0px 0px 100px 0px' }}
-            >
-                {followInPlatforms?.map((followInPlatform, index) => (
-                    <FollowCard followInPlatform={followInPlatform} key={index} />
-                ))}
-            </motion.div>
+                    <h3 className="text-lg sm:text-base">{heading.description}</h3>
+                </motion.header>
+                <motion.div
+                    className="my-9 -mx-3 flex flex-wrap justify-center xs:mx-0"
+                    variants={container}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ margin: '0px 0px 100px 0px' }}
+                >
+                    {followInPlatforms?.map((followInPlatform, index) => (
+                        <FollowCard followInPlatform={followInPlatform} key={index} />
+                    ))}
+                </motion.div>
+            </div>
         </div>
     );
 }

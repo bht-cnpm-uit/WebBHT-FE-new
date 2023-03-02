@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import ParseNotionPageContent from '~/app/components/ParseNotionPageContent';
-export default function ActivitySectionClient({ activities }) {
+export default function ActivitySectionClient({ activities, heading }) {
     return (
         <div className="px-p-body py-10 xs:px-0">
             <div className="mx-auto max-w-container xs:max-w-none">
@@ -15,9 +15,10 @@ export default function ActivitySectionClient({ activities }) {
                     <h2
                         className="heading-section"
                         dangerouslySetInnerHTML={{
-                            __html: 'Hoạt động nổi bật của <gradient-text>Ban học tập</gradient-text>',
+                            __html: heading.heading,
                         }}
                     ></h2>
+                    <h3 className="text-lg sm:text-base">{heading.description}</h3>
                 </motion.header>
                 <div className="mt-24 space-y-20">
                     {activities?.map((activity, index) => (
