@@ -26,7 +26,7 @@ function ParseNotionParagraphBlock({ children }) {
                     rel="noopener noreferrer"
                     key={index}
                     href={richtextObj?.href}
-                    className="font-medium underline decoration-primary decoration-1 underline-offset-4 hover:decoration-2"
+                    className="font-medium underline decoration-primary decoration-1 underline-offset-4 can-hover:hover:decoration-2"
                 >
                     {richtextObj?.text?.content}
                 </a>
@@ -59,7 +59,7 @@ function ParseNotionBulletBlock({ children }) {
                     rel="noopener noreferrer"
                     key={index}
                     href={richtextObj?.href}
-                    className="font-medium underline decoration-primary decoration-1 underline-offset-4 hover:decoration-2"
+                    className="font-medium underline decoration-primary decoration-1 underline-offset-4 can-hover:hover:decoration-2"
                 >
                     {richtextObj?.text?.content}
                 </a>

@@ -37,7 +37,7 @@ export default async function FooterContact() {
             <div className="mt-1 flex flex-col xs:text-center">
                 {contacts?.map((contact, index) =>
                     contact.link ? (
-                        <a key={index} href={contact.link} className="block py-1 hover:text-primary">
+                        <a key={index} href={contact.link} className="block py-1 can-hover:hover:text-primary">
                             {contact.name}
                         </a>
                     ) : (
