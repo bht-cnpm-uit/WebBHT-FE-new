@@ -1,21 +1,17 @@
 'use client';
+import clsx from 'clsx';
 import { motion, useAnimationControls, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export default function GotoTopButton() {
+    const [show, setShow] = useState(false);
     const { scrollY } = useScroll();
-    const controls = useAnimationControls();
-    const canHidden = useRef(true);
-    const canVisible = useRef(true);
+
     useMotionValueEvent(scrollY, 'change', (val) => {
-        if (val > 400 && canVisible.current) {
-            controls.start('visible');
-            canVisible.current = false;
-            canHidden.current = true;
-        } else if (val <= 400 && canHidden.current) {
-            controls.start('hidden');
-            canHidden.current = false;
-            canVisible.current = true;
+        if (val > 200) {
+            setShow(true);
+        } else {
+            setShow(false);
         }
     });
 
@@ -28,16 +24,14 @@ export default function GotoTopButton() {
 
     return (
         <motion.button
-            className="fixed right-4 bottom-20 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary/80 to-primary-to/80 text-white"
+            className={clsx(
+                'fixed right-4 bottom-20 flex h-14 w-14 translate-x-20 items-center justify-center rounded-full bg-gradient-to-br from-primary/80 to-primary-to/80 text-white transition-transform',
+                {
+                    '!translate-x-0': show,
+                }
+            )}
             whileHover={{
                 y: -3,
-            }}
-            initial="visible"
-            animate={controls}
-            transition={{ duration: 0.3 }}
-            variants={{
-                visible: { x: '0px' },
-                hidden: { x: '80px' },
             }}
             onClick={() => scrollToTop()}
         >
