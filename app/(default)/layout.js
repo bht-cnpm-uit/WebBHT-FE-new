@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import '~/styles/globals.css';
 import Script from 'next/script';
 import GotoTopButton from '../components/GotoTopButton';
+import ScrollUp from '../components/ScrollUp';
 
 export const metadata = {
     title: 'BAN HỌC TẬP ĐOÀN KHOA CÔNG NGHỆ PHẦN MỀM',
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <Script src="./highlightTextScript.js" async />
             <body className="w-full overflow-hidden">
+                <ScrollUp />
                 {/* <FacebookChatPlugin /> */}
                 <Header />
                 <main className="w-full pt-h-header md:pt-h-header-small">{children}</main>
