@@ -12,18 +12,12 @@ async function fetchHeading() {
                     'Content-Type': 'application/json',
                     'Notion-Version': process.env.NOTION_VERSION,
                 },
-                body: JSON.stringify({
-                    filter: {
-                        property: 'key',
-                        email: { equals: 'activity-section' },
-                    },
-                }),
                 next: { revalidate: 5 },
             }
         );
         const data = await res.json();
-        const page = data?.results?.[0];
-        const heading = {
+        const page = data?.results?.find((page) => page.properties?.key?.email === 'activity-section');
+        const heading = page && {
             heading:
                 page?.properties?.heading?.title?.[0]?.plain_text ||
                 'Hoạt động nổi bật của <gradient-text>Ban học tập</gradient-text>',

@@ -28,10 +28,10 @@ export default function FollowSectionClient({ followInPlatforms, heading }) {
                     <h2
                         className="heading-section"
                         dangerouslySetInnerHTML={{
-                            __html: heading.heading,
+                            __html: heading.heading || '',
                         }}
                     ></h2>
-                    <h3 className="text-lg sm:text-base">{heading.description}</h3>
+                    <h3 className="text-lg sm:text-base">{heading.description || ''}</h3>
                 </motion.header>
                 <motion.div
                     className="my-9 -mx-3 flex flex-wrap justify-center xs:mx-0"
