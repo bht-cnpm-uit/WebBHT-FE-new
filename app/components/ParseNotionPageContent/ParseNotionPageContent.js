@@ -33,7 +33,7 @@ function ParseNotionParagraphBlock({ children }) {
             );
         }
     });
-    return <div>{htmls}</div>;
+    return <div className="mb-3">{htmls}</div>;
 }
 
 function ParseNotionBulletBlock({ children }) {
