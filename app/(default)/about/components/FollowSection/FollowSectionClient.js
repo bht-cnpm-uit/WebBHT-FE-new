@@ -16,7 +16,7 @@ const container = {
 
 export default function FollowSectionClient({ followInPlatforms, heading }) {
     return (
-        <div className="overflow-hidden px-p-body py-10">
+        <div className="overflow-hidden px-p-body py-20">
             <div className="mx-auto max-w-container xs:max-w-none">
                 <motion.header
                     className="w-full text-center"
@@ -34,7 +34,7 @@ export default function FollowSectionClient({ followInPlatforms, heading }) {
                     <h3 className="text-lg sm:text-base">{heading.description || ''}</h3>
                 </motion.header>
                 <motion.div
-                    className="my-9 -mx-3 flex flex-wrap justify-center xs:mx-0"
+                    className="-mx-3 mt-11 flex flex-wrap justify-center xs:mx-0"
                     variants={container}
                     initial="hidden"
                     whileInView="visible"

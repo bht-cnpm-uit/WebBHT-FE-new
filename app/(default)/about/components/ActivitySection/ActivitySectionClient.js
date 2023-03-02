@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import ActivityItem from './ActivityItem';
 export default function ActivitySectionClient({ activities, heading }) {
     return (
-        <div className="px-p-body py-10 xs:px-0">
+        <div className="px-p-body pt-20 xs:px-0">
             <div className="mx-auto max-w-container xs:max-w-none">
                 <motion.header
                     className="w-full text-center"
