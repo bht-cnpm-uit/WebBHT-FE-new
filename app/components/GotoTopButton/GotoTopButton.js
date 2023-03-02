@@ -1,19 +1,22 @@
 'use client';
 import clsx from 'clsx';
-import { motion, useAnimationControls, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function GotoTopButton() {
     const [show, setShow] = useState(false);
-    const { scrollY } = useScroll();
 
-    useMotionValueEvent(scrollY, 'change', (val) => {
-        if (val > 200) {
-            setShow(true);
-        } else {
-            setShow(false);
+    useEffect(() => {
+        window.addEventListener('scroll', scrollFunction);
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                setShow(true);
+            } else {
+                setShow(false);
+            }
         }
-    });
+        return () => window.removeEventListener('scroll', scrollFunction);
+    }, []);
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -23,16 +26,13 @@ export default function GotoTopButton() {
     };
 
     return (
-        <motion.button
+        <button
             className={clsx(
                 'fixed right-4 bottom-20 flex h-14 w-14 translate-x-20 items-center justify-center rounded-full bg-gradient-to-br from-primary/80 to-primary-to/80 text-white transition-transform',
                 {
                     '!translate-x-0': show,
                 }
             )}
-            whileHover={{
-                y: -3,
-            }}
             onClick={() => scrollToTop()}
         >
             <svg
@@ -45,6 +45,6 @@ export default function GotoTopButton() {
             >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
             </svg>
-        </motion.button>
+        </button>
     );
 }
