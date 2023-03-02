@@ -1,4 +1,4 @@
-import CountUp from './CountUpClient';
+import StatisticSectionClient from './StatisticSectionClient';
 
 async function fetchData() {
     try {
@@ -34,24 +34,5 @@ async function fetchData() {
 
 export default async function StatisticSection() {
     const statistics = await fetchData();
-    return (
-        <div className="bg-primary px-p-body py-10 text-white">
-            <div className="mx-auto mt-8 max-w-container">
-                {/* <header className="w-full text-center">
-                    <h2 className="text-3xl font-semibold uppercase text-primary">BAN HỌC TẬP</h2>
-                </header> */}
-                <div className="flex flex-wrap justify-center">
-                    {statistics?.map((item, index) => (
-                        <div key={index} className="w-64 p-4 sm:w-56">
-                            <p className="text-center text-5xl font-light sm:text-4xl sm:font-normal">
-                                <CountUp end={item.number} duration={2.5} isCounting updateInterval={0.03} />
-                                {item.plus ? '+' : ''}
-                            </p>
-                            <p className="mt-3 text-center text-gray-200 sm:mt-1">{item.content}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
+    return <StatisticSectionClient statistics={statistics} />;
 }

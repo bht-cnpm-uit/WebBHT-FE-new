@@ -15,7 +15,7 @@ async function fetchHeading() {
                 body: JSON.stringify({
                     filter: {
                         property: 'key',
-                        email: { equals: 'follow-section' },
+                        email: { equals: 'activity-section' },
                     },
                 }),
                 next: { revalidate: 5 },
