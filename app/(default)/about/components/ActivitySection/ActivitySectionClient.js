@@ -14,10 +14,10 @@ export default function ActivitySectionClient({ activities, heading }) {
                     <h2
                         className="heading-section"
                         dangerouslySetInnerHTML={{
-                            __html: heading.heading || '',
+                            __html: heading?.heading || '',
                         }}
                     ></h2>
-                    <h3 className="text-lg sm:text-base">{heading.description || ''}</h3>
+                    <h3 className="text-lg sm:text-base">{heading?.description || ''}</h3>
                 </motion.header>
                 <div className="mt-24">
                     {activities?.map((activity, index) => (
