@@ -53,7 +53,7 @@ export default function ActivityItem({ activity, index }) {
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     <h3 className="mb-4 text-3xl font-bold text-text-dark xs:text-2xl">{activity.heading}</h3>
-                    <div className="text-lg xs:text-sm">
+                    <div className="text-lg xs:text-base">
                         <ParseNotionPageContent>{activity.content}</ParseNotionPageContent>
                     </div>
                 </motion.div>
