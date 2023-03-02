@@ -5,7 +5,7 @@ import { useRef } from 'react';
 export default function GotoTopButton() {
     const { scrollY } = useScroll();
     const controls = useAnimationControls();
-    const canHidden = useRef(false);
+    const canHidden = useRef(true);
     const canVisible = useRef(true);
     useMotionValueEvent(scrollY, 'change', (val) => {
         if (val > 400 && canVisible.current) {

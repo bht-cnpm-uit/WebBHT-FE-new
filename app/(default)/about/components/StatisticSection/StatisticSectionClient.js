@@ -37,7 +37,7 @@ export default function StatisticSectionClient({ statistics }) {
                     {statistics?.map((item, index) => (
                         <motion.div key={index} className="w-64 p-4 sm:w-56" variants={itemVariant}>
                             <div className="gradient-text text-center text-6xl font-bold  sm:text-5xl">
-                                <CountUp from={0} to={item.number || 0} duration={1.2} isOver={item.plus} />
+                                <CountUp from={0} to={item.number || 0} duration={1.5} isOver={item.plus} />
                             </div>
                             <p className="mt-3 text-center text-lg text-text sm:mt-2 sm:text-base">{item.content}</p>
                         </motion.div>
