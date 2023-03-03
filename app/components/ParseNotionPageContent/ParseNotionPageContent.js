@@ -15,9 +15,8 @@ function ParseNotionParagraphBlock({ children }) {
                         italic: richtextObj?.annotations?.italic,
                         underline: richtextObj?.annotations?.underline,
                     })}
-                >
-                    {richtextObj?.text?.content}
-                </span>
+                    dangerouslySetInnerHTML={{ __html: richtextObj?.text?.content }}
+                ></span>
             );
         } else {
             return (
@@ -48,9 +47,8 @@ function ParseNotionBulletBlock({ children }) {
                         italic: richtextObj?.annotations?.italic,
                         underline: richtextObj?.annotations?.underline,
                     })}
-                >
-                    {richtextObj?.text?.content}
-                </span>
+                    dangerouslySetInnerHTML={{ __html: richtextObj?.text?.content }}
+                ></span>
             );
         } else {
             return (

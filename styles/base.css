@@ -34,7 +34,7 @@
     }
     @screen xs {
         :root {
-            --p-body: 0.75rem;
+            --p-body: 1rem;
         }
     }
 

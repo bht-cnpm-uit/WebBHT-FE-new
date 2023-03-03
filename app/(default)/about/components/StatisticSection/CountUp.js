@@ -4,7 +4,7 @@ import { animate, useInView } from 'framer-motion';
 
 export default function FramerCounter({ from, to, duration, isOver }) {
     const nodeRef = useRef();
-    const isInView = useInView(nodeRef);
+    const isInView = useInView(nodeRef, { once: true });
 
     useEffect(() => {
         const node = nodeRef.current;
