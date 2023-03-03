@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Customize from './Customize';
 
 export default function FooterClient({ footerDescription, footerShortLink, footerContact }) {
     return (
@@ -14,6 +15,7 @@ export default function FooterClient({ footerDescription, footerShortLink, foote
                 <div className="flex flex-1 justify-evenly md:flex-wrap md:justify-start xs:justify-center">
                     {footerShortLink}
                     {footerContact}
+                    <Customize />
                 </div>
             </div>
         </motion.footer>

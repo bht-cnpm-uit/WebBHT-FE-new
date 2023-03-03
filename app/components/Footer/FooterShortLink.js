@@ -35,7 +35,7 @@ export default async function FooterShortLink() {
     const nav = await fetchData();
     return (
         <div className="flex min-w-[180px] flex-col md:mt-8 xs:items-center">
-            <p className="text-lg font-bold text-text-semidark">Truy cập nhanh</p>
+            <p className="text-lg font-semibold text-text-semidark">Truy cập nhanh</p>
             <div className="mt-1 flex flex-col xs:text-center">
                 {nav?.map((navItem) => (
                     <Link href={navItem.link} className="block py-1 can-hover:hover:text-primary">
