@@ -2,16 +2,17 @@
 
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-function ThemeSwitch() {
-    const [isLight, setIsLight] = useState(true);
-
-    useEffect(() => {
+export default function ThemeSwitch() {
+    const [isLight, setIsLight] = useState(() => {
         if (typeof window !== 'undefined' && localStorage.getItem('theme') === 'dark') {
-            return setIsLight(false);
+            return false;
+        } else {
+            return true;
         }
-    }, []);
+    });
+    console.log(isLight);
 
     const toggleSwitch = () => {
         if (!isLight) {
@@ -60,17 +61,6 @@ function ThemeSwitch() {
                     </svg>
                 )}
             </motion.div>
-        </div>
-    );
-}
-
-export default function Customize() {
-    return (
-        <div className="flex min-w-[180px] flex-col md:mt-8 xs:items-center">
-            <p className="text-lg font-semibold text-text-semidark">Tuỳ chỉnh</p>
-            <div className="mt-1 flex flex-col xs:text-center">
-                <ThemeSwitch />
-            </div>
         </div>
     );
 }
