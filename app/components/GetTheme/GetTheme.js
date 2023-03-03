@@ -5,15 +5,16 @@ import { useEffect } from 'react';
 export default function GetTheme() {
     useEffect(() => {
         const isDarkModeEnabled = () => {
-            const savedTheme = localStorage.getItem('theme');
+            const savedTheme = typeof window !== 'undefined' && localStorage.getItem('theme');
             if (savedTheme !== null) {
                 return savedTheme === 'dark';
             } else {
-                const isDeviceDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const isDeviceDark =
+                    typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (isDeviceDark) {
-                    localStorage.setItem('theme', 'dark');
+                    typeof window !== 'undefined' && localStorage.setItem('theme', 'dark');
                 } else {
-                    localStorage.setItem('theme', 'light');
+                    typeof window !== 'undefined' && localStorage.setItem('theme', 'light');
                 }
                 return isDeviceDark;
             }

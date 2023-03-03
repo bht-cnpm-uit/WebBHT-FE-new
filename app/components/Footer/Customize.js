@@ -4,20 +4,20 @@ import React, { useState } from 'react';
 
 function ThemeSwitch() {
     const [isLight, setIsLight] = useState(() => {
-        if (localStorage.getItem('theme') === 'light') {
-            return true;
-        } else {
+        if (typeof window !== 'undefined' && localStorage.getItem('theme') === 'dark') {
             return false;
+        } else {
+            return true;
         }
     });
 
     const toggleSwitch = () => {
         if (!isLight) {
             document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
+            typeof window !== 'undefined' && localStorage.setItem('theme', 'light');
         } else {
             document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
+            typeof window !== 'undefined' && localStorage.setItem('theme', 'dark');
         }
 
         setIsLight(!isLight);
