@@ -9,6 +9,7 @@ export default function FooterClient({ footerDescription, footerShortLink, foote
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ type: 'spring', duration: 1 }}
+            viewport={{ once: true }}
         >
             <div className="mx-auto flex max-w-container flex-wrap md:flex-col xs:max-w-none">
                 {footerDescription}

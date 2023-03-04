@@ -17,14 +17,15 @@ export default function MobileHeader({ platformGroup, nav }) {
     });
 
     return (
-        <header
+        <motion.header
             className={clsx(
                 'fixed top-0 z-header hidden h-h-header-small w-full items-center justify-between bg-bg px-p-body transition-shadow duration-300 md:flex',
                 {
                     'shadow-lg shadow-gray-600/5 dark:shadow-gray-500/5': !isInTop,
                 }
             )}
-            initial="visible"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
         >
             {/* LOGO */}
             <div className="flex flex-initial items-center">
@@ -34,6 +35,6 @@ export default function MobileHeader({ platformGroup, nav }) {
             </div>
 
             <MobileMenu platformGroup={platformGroup} nav={nav} />
-        </header>
+        </motion.header>
     );
 }

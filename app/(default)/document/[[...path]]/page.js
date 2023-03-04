@@ -10,6 +10,7 @@ import {
     faImage,
     faCopy,
 } from '@fortawesome/free-solid-svg-icons';
+import NProgress from 'nprogress';
 
 import docData from '~/data/document.json';
 import { usePathname, useRouter } from 'next/navigation';
@@ -97,7 +98,7 @@ export default function Document() {
     const [searchResult, setSearchResult] = useState({ file: [], folder: [] });
     const [mounted, setMouted] = useState(false);
 
-    const search = useDebounce(searchInput, 1000);
+    const search = useDebounce(searchInput, 500);
 
     useEffect(() => {
         setMouted(true);
@@ -118,7 +119,6 @@ export default function Document() {
         }
     }, [pathName]);
 
-    console.log(search, searchInput);
     useEffect(() => {
         if (search) {
             const result = findByKeyWord(docData, search);
@@ -132,8 +132,10 @@ export default function Document() {
         if (item.type === 'folder') {
             if (!path) {
                 router.push('document/' + item.path);
+                NProgress.start();
             } else {
                 router.push('document/' + path.join('/') + '/' + item.path);
+                NProgress.start();
             }
         } else {
             if (item.link) {

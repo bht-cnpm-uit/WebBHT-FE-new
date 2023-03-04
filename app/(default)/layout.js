@@ -9,6 +9,7 @@ import Script from 'next/script';
 import GotoTopButton from '../components/GotoTopButton';
 import ScrollUp from '../components/ScrollUp';
 import GetTheme from '../components/GetTheme';
+import NavigationProgess from '../components/NavigationProgess/NavigationProgess';
 
 export const metadata = {
     title: 'BAN HỌC TẬP ĐOÀN KHOA CÔNG NGHỆ PHẦN MỀM',
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
             <Script src="./highlightTextScript.js" async />
             <body className="w-full overflow-hidden">
                 <GetTheme />
+                <NavigationProgess />
                 <ScrollUp />
                 {/* <FacebookChatPlugin /> */}
                 <Header />
