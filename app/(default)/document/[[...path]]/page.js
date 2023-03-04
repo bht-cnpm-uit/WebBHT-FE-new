@@ -13,11 +13,12 @@ import {
 
 import docData from '~/data/document.json';
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import Link from 'next/link';
 import findByPath from '~/utils/findByPath';
 import findByKeyWord from '~/utils/findByKeyword';
 import Button from '~/app/components/Button';
+import useDebounce from '~/hooks/useDebouce';
 
 const ICONS = {
     folder: (
@@ -92,9 +93,11 @@ export default function Document() {
 
     const [foundData, setFoundData] = useState([]);
     const [breadcrumb, setBreadCrumb] = useState([]);
-    const [search, setSearch] = useState('');
+    const [searchInput, setSearchInput] = useState('');
     const [searchResult, setSearchResult] = useState({ file: [], folder: [] });
     const [mounted, setMouted] = useState(false);
+
+    const search = useDebounce(searchInput, 1000);
 
     useEffect(() => {
         setMouted(true);
@@ -115,13 +118,13 @@ export default function Document() {
         }
     }, [pathName]);
 
+    console.log(search, searchInput);
     useEffect(() => {
         if (search) {
             const result = findByKeyWord(docData, search);
             const searchResultFile = result?.filter((elem) => elem?.item?.type !== 'folder');
             const searchResultFolder = result?.filter((elem) => elem?.item?.type === 'folder');
             setSearchResult({ file: searchResultFile, folder: searchResultFolder });
-            console.log({ file: searchResultFile, folder: searchResultFolder });
         }
     }, [search]);
 
@@ -175,15 +178,13 @@ export default function Document() {
                             />
                         </svg>
                     </div>
-
                     <input
                         type="text"
                         className="h-full flex-1 rounded-md bg-bg px-3"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
                         placeholder="Tìm theo mã môn, tên môn,..."
                     />
-
                     {search && (
                         <div className="absolute top-full left-0 right-0 hidden max-h-[400px] min-h-[300px] overflow-auto rounded-md border bg-bg p-3 shadow-md group-focus-within:block dark:border-gray-800">
                             <div className="mb-2">
@@ -214,11 +215,11 @@ export default function Document() {
                             </div>
                             <div>
                                 <div className="mb-1 font-semibold text-text-semidark">Thư mục:</div>
-                                <div div className="space-y-2">
+                                <div className="space-y-2">
                                     {!searchResult?.folder?.slice(0, 10)?.length ? (
                                         <div className="pl-3">Không tìm thấy thư mục</div>
                                     ) : (
-                                        searchResult?.folder?.map((searchResult, index) => (
+                                        searchResult?.folder?.slice(0, 10)?.map((searchResult, index) => (
                                             <Link
                                                 key={index}
                                                 href={

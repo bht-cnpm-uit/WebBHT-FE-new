@@ -91,3 +91,11 @@
     --clr-bg: 13, 17, 23;
     --clr-bg-light: 22, 27, 34;
 }
+
+[data-color-scheme='dark'] {
+    color-scheme: dark;
+}
+
+[data-color-scheme='light'] {
+    color-scheme: light;
+}

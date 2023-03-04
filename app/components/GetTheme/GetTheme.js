@@ -34,6 +34,7 @@ export default function GetTheme() {
         // Set initial theme
         if (isDarkModeEnabled()) {
             document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-color-scheme', 'dark');
         }
     }, []);
 

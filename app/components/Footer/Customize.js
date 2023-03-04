@@ -14,6 +14,7 @@ function ThemeSwitch() {
     }, []);
 
     const toggleSwitch = () => {
+        document.documentElement.setAttribute('data-color-scheme', !isLight ? 'light' : 'dark');
         if (!isLight) {
             document.documentElement.classList.remove('dark');
             typeof window !== 'undefined' && localStorage.setItem('theme', 'light');
