@@ -154,9 +154,11 @@ export default function Document() {
     return (
         <>
             {/* BANNER */}
-            <div className="flex h-[200px] flex-col items-center justify-center bg-primary px-p-body">
-                <h2 className="mb-4 px-6 text-center text-xl font-semibold text-white">TÀI LIỆU HỌC TẬP</h2>
-                <div className="group relative flex h-9 w-full max-w-[800px] items-center rounded-md bg-white px-3 ring-white ring-opacity-50 focus-within:ring-1">
+            <div className="flex h-[200px] flex-col items-center justify-center bg-gradient-to-r from-primary/30 to-primary-to/30 px-p-body">
+                <h2 className="mb-4 text-center text-4xl font-bold leading-tight text-text-dark xs:text-3xl">
+                    Tài liệu học tập
+                </h2>
+                <div className="group relative flex h-11 w-full max-w-[800px] items-center rounded-md bg-bg px-3">
                     <div className="text-text">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -176,16 +178,16 @@ export default function Document() {
 
                     <input
                         type="text"
-                        className="h-full flex-1 rounded-md px-3 "
+                        className="h-full flex-1 rounded-md bg-bg px-3"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Tìm theo mã môn, tên môn,..."
                     />
 
                     {search && (
-                        <div className="absolute top-full left-0 right-0 hidden max-h-[400px] min-h-[300px] overflow-auto rounded-md border bg-white p-3 shadow-md group-focus-within:block">
+                        <div className="absolute top-full left-0 right-0 hidden max-h-[400px] min-h-[300px] overflow-auto rounded-md border bg-bg p-3 shadow-md group-focus-within:block dark:border-gray-800">
                             <div className="mb-2">
-                                <div className="mb-1 font-semibold">File:</div>
+                                <div className="mb-1 font-semibold text-text-semidark">File:</div>
                                 <div className="space-y-2">
                                     {!searchResult?.file?.length ? (
                                         <div className="pl-3">Không tìm thấy file</div>
@@ -196,10 +198,10 @@ export default function Document() {
                                                 href={searchResult?.item?.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex cursor-pointer items-center rounded border p-3 hover:bg-bg-light"
+                                                className="flex cursor-pointer items-center rounded border p-3 hover:bg-bg-light dark:border-gray-800"
                                             >
                                                 <div className="pr-3 text-center">
-                                                    {ICONS[searchResult?.item?.type]}
+                                                    {ICONS[searchResult?.item?.type] || ICONS.file}
                                                 </div>
                                                 <div className="pr-4">{searchResult?.item?.name}</div>
                                                 <div className="flex-1 overflow-hidden whitespace-nowrap text-right text-sm text-text">
@@ -211,8 +213,8 @@ export default function Document() {
                                 </div>
                             </div>
                             <div>
-                                <div className="mb-1 font-semibold">Thư mục:</div>
-                                <div>
+                                <div className="mb-1 font-semibold text-text-semidark">Thư mục:</div>
+                                <div div className="space-y-2">
                                     {!searchResult?.folder?.slice(0, 10)?.length ? (
                                         <div className="pl-3">Không tìm thấy thư mục</div>
                                     ) : (
@@ -224,7 +226,7 @@ export default function Document() {
                                                     searchResult?.path?.[searchResult?.path?.length - 1]?.path
                                                 }
                                                 rel="noopener noreferrer"
-                                                className="flex cursor-pointer items-center rounded border p-3 hover:bg-bg-light"
+                                                className="flex cursor-pointer items-center rounded border p-3 hover:bg-bg-light dark:border-gray-800"
                                             >
                                                 <div className="pr-3 text-center">
                                                     {ICONS[searchResult?.item?.type]}
@@ -270,7 +272,7 @@ export default function Document() {
             <div className="min-h-[250px] p-p-body ">
                 <table className="mx-auto w-full max-w-container">
                     <thead className="">
-                        <tr className="border-b dark:border-gray-600">
+                        <tr className="border-b dark:border-gray-800">
                             <th className="w-16 p-3 text-center font-medium">Loại</th>
                             <th className="p-3 text-left font-medium">Tên</th>
                             <th className="p-3 text-right font-medium">Tuỳ chọn</th>
@@ -298,7 +300,7 @@ export default function Document() {
                             foundData.map((item, index) => (
                                 <tr
                                     key={index}
-                                    className="cursor-pointer border-b hover:bg-bg-light dark:border-gray-600"
+                                    className="cursor-pointer border-b hover:bg-bg-light dark:border-gray-800"
                                     onClick={() => handleItemClick(item)}
                                 >
                                     <td className="p-3 text-center">
