@@ -53,7 +53,7 @@ const membersVariants = {
         transition: {
             delay: 0.7,
             when: 'beforeChildren',
-            staggerChildren: 0.1,
+            staggerChildren: 0.07,
         },
     },
 };
