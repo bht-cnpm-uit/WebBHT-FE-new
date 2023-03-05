@@ -2,10 +2,9 @@
 import { motion } from 'framer-motion';
 
 const memberVariants = {
-    hidden: { x: -10, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        x: 0,
     },
 };
 

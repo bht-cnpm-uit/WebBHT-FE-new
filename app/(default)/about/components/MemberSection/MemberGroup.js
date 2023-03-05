@@ -36,9 +36,9 @@ const circleVariants = {
 };
 
 const lineVariants = {
-    hidden: { height: 0 },
+    hidden: { scaleY: 0 },
     visible: {
-        height: 'initial',
+        scaleY: 1,
         transition: {
             duration: 0.3,
             delay: 0.5,
@@ -67,7 +67,6 @@ export default function MemeberGroup({ members, year }) {
             viewport={{ margin: '0px 0px -200px 0px' }}
             className="mt-10 w-full"
         >
-            {/* YEAR */}
             <div className="-ml-[15px] flex items-center">
                 <div className="rounded-full text-primary">
                     <motion.svg
@@ -93,12 +92,11 @@ export default function MemeberGroup({ members, year }) {
             </div>
 
             <div className="flex items-stretch">
-                {/* Line */}
                 <motion.div
                     variants={lineVariants}
+                    style={{ originY: 0 }}
                     className="-my-2 w-0.5 rounded-full bg-gradient-to-b from-primary via-primary-to to-primary-to/0"
                 ></motion.div>
-                {/* CARDS */}
                 <motion.div variants={membersVariants} className="ml-7 mt-5 flex flex-1 flex-wrap">
                     {members?.map((member, index) => (
                         <MemberCard key={index} member={member} />
