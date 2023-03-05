@@ -11,7 +11,7 @@ export default function About() {
             <StatisticSection />
             <FollowSection />
             <ActivitySection />
-            {/* <MemberSection /> */}
+            <MemberSection />
         </>
     );
 }
