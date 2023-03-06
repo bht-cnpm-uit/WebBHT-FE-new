@@ -29,7 +29,7 @@ export const metadata = {
         siteName: 'Ban học tập Công nghệ Phần mềm',
         images: [
             {
-                url: '/images/thumbnail.jpg',
+                url: '/images/thumbnail.png',
             },
         ],
         type: 'website',
