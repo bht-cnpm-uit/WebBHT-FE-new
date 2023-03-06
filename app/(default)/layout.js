@@ -12,8 +12,8 @@ import GetTheme from '../components/GetTheme';
 import NavigationProgess from '../components/NavigationProgess/NavigationProgess';
 
 export const metadata = {
-    title: 'BAN HỌC TẬP ĐOÀN KHOA CÔNG NGHỆ PHẦN MỀM',
-    description: 'BAN HỌC TẬP ĐOÀN KHOA CÔNG NGHỆ PHẦN MỀM',
+    title: 'Ban học tập Công nghệ Phần mềm',
+    description: 'Ban học tập Đoàn khoa Công nghệ Phần mềm',
     icons: {
         icon: '/favicon.ico',
         shortcut: '/favicon.ico',
