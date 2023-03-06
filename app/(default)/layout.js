@@ -23,6 +23,19 @@ export const metadata = {
             url: '/favicon.ico',
         },
     },
+    openGraph: {
+        title: 'Ban học tập Công nghệ Phần mềm',
+        description: 'Ban học tập Đoàn khoa Công nghệ Phần mềm',
+        siteName: 'Ban học tập Công nghệ Phần mềm',
+        images: [
+            {
+                url: '/images/thumbnail.jpg',
+                width: 800,
+                height: 600,
+            },
+        ],
+        type: 'website',
+    },
 };
 
 export default function RootLayout({ children }) {
