@@ -30,8 +30,6 @@ export const metadata = {
         images: [
             {
                 url: '/images/thumbnail.jpg',
-                width: 800,
-                height: 533,
             },
         ],
         type: 'website',
