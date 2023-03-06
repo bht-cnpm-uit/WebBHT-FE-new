@@ -4,3 +4,11 @@ export default function groupBy(xs, key) {
         return rv;
     }, {});
 }
+
+export function groupByMap(arr, keySupplier) {
+    return arr.reduce(function (rv, x) {
+        const key = keySupplier(x);
+        (rv[key] = rv[key] || []).push(x);
+        return rv;
+    }, {});
+}

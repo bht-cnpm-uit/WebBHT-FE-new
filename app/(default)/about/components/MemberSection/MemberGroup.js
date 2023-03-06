@@ -58,7 +58,7 @@ const membersVariants = {
     },
 };
 
-export default function MemeberGroup({ members, year }) {
+export default function MemberGroup({ members, groupTitle }) {
     return (
         <motion.div
             variants={container}
@@ -87,7 +87,7 @@ export default function MemeberGroup({ members, year }) {
                 </div>
 
                 <motion.div variants={yearVariants} className="ml-7 text-4xl font-bold text-text-semidark">
-                    {year}
+                    {groupTitle}
                 </motion.div>
             </div>
 

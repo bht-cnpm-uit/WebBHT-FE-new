@@ -43,7 +43,12 @@ function DesktopCard({ member }) {
                             />
                         </motion.div>
                         <p className="gradient-text mt-4 text-lg font-bold">{member.name}</p>
-                        <p className="mt-2">{member.role}</p>
+
+                        {
+                            member.role_titles.map((title, index) => (
+                                <p key={index} className="mt-2">{title}</p>
+                            ))
+                        }
                     </motion.div>
                 )}
             </motion.div>
@@ -88,7 +93,11 @@ function MobileCard({ member }) {
                                 />
                             </motion.div>
                             <p className="gradient-text mt-4 text-lg font-bold">{member.name}</p>
-                            <p className="mt-2">{member.role}</p>
+                            {
+                                member.role_titles.map((title, index) => (
+                                    <p key={index} className="mt-2">{title}</p>
+                                ))
+                            }
                         </motion.div>
                     </motion.div>
                 )}

@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import MemberCard from './MemberCard';
-import MemeberGroup from './MemberGroup';
+import MemberGroup from './MemberGroup';
 
 export default function MemberSectionClient({ members, heading }) {
     return (
@@ -25,9 +25,8 @@ export default function MemberSectionClient({ members, heading }) {
 
                 <div className="mx-auto mt-10 flex max-w-[767px] flex-col items-center">
                     {Object.keys(members)
-                        ?.sort((a, b) => Number(a) - Number(b))
-                        ?.map((year, index) => (
-                            <MemeberGroup key={index} year={year} members={members?.[year]} />
+                        ?.map((groupKey, index) => (
+                            <MemberGroup key={index} groupTitle={groupKey} members={members?.[groupKey]} />
                         ))}
                 </div>
             </div>

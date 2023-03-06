@@ -1,11 +1,11 @@
-import groupBy from '~/utils/groupBy';
-import { getImageFromProperty } from '~/utils/notionTool';
-import MemberCard from './MemberCard';
+import {groupByMap} from '~/utils/groupBy';
 import MemberSectionClient from './MemberSectionClient';
+import {readNotionFields, toMemberObjects} from "~/app/(default)/about/components/MemberSection/MemberParser";
 
 async function fetchData() {
     try {
-        const res = await fetch(`${process.env.NOTION_API}/databases/${process.env.MEMBERS_DB_ID}/query`, {
+        console.log(process.env.MEMBERS_DB_ID_NEW);
+        const res = await fetch(`${process.env.NOTION_API}/databases/${process.env.MEMBERS_DB_ID_NEW}/query`, {
             method: 'POST',
             headers: {
                 Authorization: 'Bearer ' + process.env.NOTION_TOKEN,
@@ -13,7 +13,7 @@ async function fetchData() {
                 'Notion-Version': process.env.NOTION_VERSION,
             },
             body: JSON.stringify({
-                sorts: [
+                /*sorts: [
                     {
                         property: 'year',
                         direction: 'ascending',
@@ -22,18 +22,28 @@ async function fetchData() {
                         property: 'index',
                         direction: 'ascending',
                     },
-                ],
+                ],*/
             }),
-            next: { revalidate: 5 },
+            next: {revalidate: 5},
         });
-        const data = await res.json();
-        let members = data?.results?.map((page) => ({
+        const response = await res.json();
+
+        const data = readNotionFields(response.results);
+
+        /*let members = data?.results?.map((page) => ({
             name: page?.properties?.name?.title?.[0]?.plain_text,
             year: Number(page?.properties?.year?.select?.name),
             image: getImageFromProperty(page?.properties?.images),
             role: page?.properties?.role?.select?.name || null,
-        }));
-        members = groupBy(members, 'year');
+        }));*/
+        let members = toMemberObjects(data);
+
+        members = groupByMap(members.sort((a, b) => {
+                if (a.school_year !== b.school_year) return b.school_year - a.school_year;
+                if (a.current_role_title !== b.current_role_title) return a.current_role_index - b.current_role_index;
+                return 0;
+            })
+            , (member) => `Khóa ${member.school_year}`);
         return members;
     } catch (error) {
         console.log(error);
@@ -52,7 +62,7 @@ async function fetchHeading() {
                     'Content-Type': 'application/json',
                     'Notion-Version': process.env.NOTION_VERSION,
                 },
-                next: { revalidate: 5 },
+                next: {revalidate: 5},
             }
         );
 
@@ -74,5 +84,5 @@ async function fetchHeading() {
 export default async function MemberSection() {
     const members = await fetchData();
     const heading = await fetchHeading();
-    return <MemberSectionClient members={members} heading={heading} />;
+    return <MemberSectionClient members={members} heading={heading}/>;
 }
