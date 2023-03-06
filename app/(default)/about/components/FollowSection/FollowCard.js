@@ -32,17 +32,7 @@ export default function FollowCard({ followInPlatform }) {
 
             <div className="mt-4">
                 <div className="text-xl font-bold text-text-semidark">{followInPlatform.heading}</div>
-                {/* <div className="mt-1">{followInPlatform.description}</div> */}
-                <div className="mt-1">
-                    {'Become an advanced, co n ' +
-                        followInPlatform.heading +
-                        ' ' +
-                        followInPlatform.heading +
-                        ' ' +
-                        followInPlatform.heading +
-                        ' JavaScript developer from scratch' +
-                        followInPlatform.heading}
-                </div>
+                <div className="mt-1">{followInPlatform.description}</div>
             </div>
         </motion.a>
     );
