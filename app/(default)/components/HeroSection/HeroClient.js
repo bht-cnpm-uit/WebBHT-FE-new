@@ -5,7 +5,7 @@ import ParseNotionPageContent from '~/app/components/ParseNotionPageContent';
 export default function HeroClient({ heroHeadingAndDescription, buttonInHero }) {
     return (
         <motion.div
-            className="w-1/2 space-y-6 md:w-full sm:px-p-body"
+            className="w-1/2 space-y-6 md:w-full"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ type: 'spring', duration: 1, delay: 0.2 }}

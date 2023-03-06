@@ -28,7 +28,7 @@ export default function GotoTopButton() {
     return (
         <button
             className={clsx(
-                'fixed right-4 bottom-20 flex h-14 w-14 translate-x-20 items-center justify-center rounded-full bg-gradient-to-br from-primary/80 to-primary-to/80 text-white transition-transform',
+                'fixed right-4 bottom-20 z-[10] flex h-14 w-14 translate-x-20 items-center justify-center rounded-full bg-gradient-to-br from-primary/80 to-primary-to/80 text-white transition-transform',
                 {
                     '!translate-x-0': show,
                 }

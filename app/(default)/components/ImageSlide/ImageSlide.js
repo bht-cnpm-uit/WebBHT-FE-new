@@ -1,5 +1,6 @@
 import { getImageFromProperty } from '~/utils/notionTool';
 import ImageSlideClient from './ImageSlideClient';
+import MobileImageSlideClient from './MobileImageSlideClient';
 
 async function fetchData() {
     try {
@@ -38,5 +39,10 @@ async function fetchData() {
 
 export default async function ImageSlide() {
     const slideImages = await fetchData();
-    return <ImageSlideClient slideImages={slideImages} />;
+    return (
+        <>
+            <ImageSlideClient slideImages={slideImages} />
+            <MobileImageSlideClient slideImages={slideImages} />
+        </>
+    );
 }
