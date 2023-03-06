@@ -185,7 +185,7 @@ export default function Document() {
                         className="h-full flex-1 rounded-md bg-bg px-3"
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
-                        placeholder="Tìm theo mã môn, tên môn,..."
+                        placeholder="Tìm tài liệu..."
                     />
                     {search && (
                         <div className="absolute top-full left-0 right-0 hidden max-h-[400px] min-h-[300px] overflow-auto rounded-md border bg-bg p-3 shadow-md group-focus-within:block dark:border-gray-800">

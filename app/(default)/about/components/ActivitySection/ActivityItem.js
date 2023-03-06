@@ -11,7 +11,7 @@ export default function ActivityItem({ activity, index }) {
                 })}
             >
                 <motion.div
-                    className="flex w-[45%] max-w-[580px] items-center"
+                    className="flex w-[45%] max-w-[580px] items-center rounded-3xl bg-bg-light"
                     initial={{ x: index % 2 !== 0 ? 150 : -150, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -37,6 +37,7 @@ export default function ActivityItem({ activity, index }) {
             {/* MOBILE */}
             <div className="mb-20 hidden md:block">
                 <motion.div
+                    className="bg-bg-light"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}

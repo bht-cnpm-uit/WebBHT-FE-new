@@ -31,23 +31,23 @@ const IMAGES = [
 ];
 
 export default function ImageSlideClient({ slideImages }) {
-    const [images, setImages] = useState(IMAGES);
+    const [images, setImages] = useState(slideImages);
     const [hover, setHover] = useState(false);
     const classes = [
         {
-            wrapper: 'absolute block h-[420px] w-[370px] overflow-hidden rounded-2xl',
+            wrapper: 'absolute block bg-bg-light h-[420px] w-[370px] overflow-hidden rounded-2xl',
             overlay: 'absolute inset-0 bg-bg opacity-0',
         },
         {
-            wrapper: 'absolute block h-[356px] w-[314px] overflow-hidden rounded-2xl hover:cursor-pointer ',
+            wrapper: 'absolute block bg-bg-light h-[356px] w-[314px] overflow-hidden rounded-2xl hover:cursor-pointer ',
             overlay: 'absolute inset-0 bg-bg hover:opacity-0 transition-opacity opacity-30',
         },
         {
-            wrapper: 'absolute block h-[300px] w-[264px] overflow-hidden rounded-2xl hover:cursor-pointer ',
+            wrapper: 'absolute block bg-bg-light h-[300px] w-[264px] overflow-hidden rounded-2xl hover:cursor-pointer ',
             overlay: 'absolute inset-0 bg-bg hover:opacity-0 transition-opacity opacity-50',
         },
         {
-            wrapper: 'absolute block h-[230px] w-[202px] overflow-hidden rounded-2xl hover:cursor-pointer ',
+            wrapper: 'absolute block bg-bg-light h-[230px] w-[202px] overflow-hidden rounded-2xl hover:cursor-pointer ',
             overlay: 'absolute inset-0 bg-bg hover:opacity-0 transition-opacity opacity-70',
         },
     ];

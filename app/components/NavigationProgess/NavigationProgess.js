@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import NProgress from 'nprogress';
 
 export default function NavigationProgess() {
-    const height = '2px';
+    const height = '3px';
     const color = 'rgb(var(--clr-primary))';
 
     const styles = (

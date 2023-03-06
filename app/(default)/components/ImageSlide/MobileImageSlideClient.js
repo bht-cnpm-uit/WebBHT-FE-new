@@ -58,8 +58,8 @@ export default function MobileImageSlideClient({ slideImages }) {
                 spaceBetween={24}
                 ref={swiperRef}
             >
-                {IMAGES?.map((slide, index) => (
-                    <SwiperSlide key={index} className="w-[370px] overflow-hidden rounded-xl xs:w-[300px]">
+                {slideImages?.map((slide, index) => (
+                    <SwiperSlide key={index} className="w-[370px] overflow-hidden rounded-xl bg-bg-light xs:w-[300px]">
                         <a target="_blank" rel="noopener noreferrer" href={slide.link} className="block h-full w-full">
                             <img src={slide.src} className="h-full w-full object-cover" />
                         </a>
