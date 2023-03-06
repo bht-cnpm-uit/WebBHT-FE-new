@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
                 <GetTheme />
                 <NavigationProgess />
                 <ScrollUp />
-                {/* <FacebookChatPlugin /> */}
+                <FacebookChatPlugin />
                 <Header />
                 <main className="w-full pt-h-header md:pt-h-header-small">{children}</main>
                 <Footer />
