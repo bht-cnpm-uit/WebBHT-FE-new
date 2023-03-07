@@ -44,14 +44,16 @@ export default function NavigationProgess() {
         const handleAnchorClick = (event) => {
             const targetUrl = event.currentTarget.href;
             const currentUrl = location.href;
-            if (targetUrl !== currentUrl) {
+            if (targetUrl !== currentUrl && new URL(targetUrl).origin === location.origin) {
                 NProgress.start();
             }
         };
 
         const handleMutation = () => {
             const anchorElements = document.querySelectorAll('a');
-            anchorElements.forEach((anchor) => anchor.addEventListener('click', handleAnchorClick));
+            anchorElements.forEach((anchor) => {
+                if (anchor.href) anchor.addEventListener('click', handleAnchorClick);
+            });
         };
 
         const mutationObserver = new MutationObserver(handleMutation);
