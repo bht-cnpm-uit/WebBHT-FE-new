@@ -11,12 +11,12 @@ export default function ActivityItem({ activity, index }) {
                 })}
             >
                 <motion.div
-                    className="flex w-[45%] max-w-[580px] items-center rounded-3xl bg-bg-light"
+                    className="flex w-[45%] max-w-[580px] items-center rounded-3xl"
                     initial={{ x: index % 2 !== 0 ? 150 : -150, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                    <img src={activity.image} className="aspect-[9/6] w-full rounded-3xl object-cover" />
+                    <img src={activity.image} className="aspect-[9/6] w-full rounded-3xl bg-bg-light object-cover" />
                 </motion.div>
                 <motion.div
                     className={clsx('flex flex-1 flex-col justify-center', {
