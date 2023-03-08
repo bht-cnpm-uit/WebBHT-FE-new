@@ -1,4 +1,5 @@
 import '~/styles/globals.css';
+import BlogHeader from './components/BlogHeader';
 
 export const metadata = {
     title: 'Blog | Ban học tập Công nghệ Phần mềm',
@@ -29,8 +30,8 @@ export default function Layout({ children }) {
     return (
         <html lang="en">
             <body className="w-full overflow-hidden">
-                <header>HEADER</header>
-                <main className="">{children}</main>
+                <BlogHeader />
+                <main className="mt-h-header-small">{children}</main>
                 <footer>FOOTER</footer>
             </body>
         </html>

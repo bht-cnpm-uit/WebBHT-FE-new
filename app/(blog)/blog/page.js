@@ -1,3 +1,11 @@
+import BannerSection from './components/BannerSection';
+import CategoryBar from './components/CategoryBar';
+
 export default async function () {
-    return <div>Blog page</div>;
+    return (
+        <>
+            <BannerSection />
+            <CategoryBar />
+        </>
+    );
 }
