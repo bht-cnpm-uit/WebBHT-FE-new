@@ -9,12 +9,12 @@ export default function CategoryBarClient({ categories = [] }) {
     const searchParams = useSearchParams();
     const categoryParam = searchParams.get('category');
     return (
-        <div className="px-p-body">
-            <div className="mx-auto flex max-w-[800px] flex-wrap items-center py-3">
+        <div className="flex justify-center px-p-body">
+            <div className="-mx-2 flex max-w-[800px] flex-wrap items-center py-3">
                 <Link
                     href="/blog"
                     className={clsx(
-                        'mx-3 inline-flex min-w-[80px] justify-center rounded-full px-4 py-2 font-semibold',
+                        'm-1 inline-flex min-w-[80px] justify-center rounded-full bg-bg-light px-4 py-2 font-semibold',
                         {
                             'bg-primary text-white': !categoryParam,
                         }
@@ -27,7 +27,7 @@ export default function CategoryBarClient({ categories = [] }) {
                         href={'/blog' + '?category=' + category.id}
                         key={category.id}
                         className={clsx(
-                            'mx-3 inline-flex min-w-[80px] justify-center rounded-full px-4 py-2 font-semibold',
+                            'm-1 inline-flex min-w-[80px] justify-center rounded-full bg-bg-light px-4 py-2 font-semibold',
                             {
                                 'bg-primary text-white': category.id === categoryParam,
                             }
