@@ -1,4 +1,5 @@
 import '~/styles/globals.css';
+import NavigationProgess from '../components/NavigationProgess/NavigationProgess';
 import BlogHeader from './components/BlogHeader';
 
 export const metadata = {
@@ -30,6 +31,7 @@ export default function Layout({ children }) {
     return (
         <html lang="en">
             <body className="w-full overflow-hidden">
+                <NavigationProgess />
                 <BlogHeader />
                 <main className="mt-h-header-small">{children}</main>
                 <footer>FOOTER</footer>

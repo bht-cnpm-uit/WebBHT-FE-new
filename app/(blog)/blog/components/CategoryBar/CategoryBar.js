@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import CategoryBarClient from './CategoryBarClient';
 
 async function fetchData() {
@@ -17,7 +18,7 @@ async function fetchData() {
                     },
                 ],
             }),
-            next: { revalidate: 5 },
+            cache: 'no-store',
         });
         const data = await res.json();
         const categories = data?.results?.map((page) => ({

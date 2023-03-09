@@ -12,7 +12,7 @@ export default function CategoryBarClient({ categories = [] }) {
         <div className="px-p-body">
             <div className="mx-auto flex max-w-[800px] flex-wrap items-center py-3">
                 <Link
-                    href={'/blog'}
+                    href="/blog"
                     className={clsx(
                         'mx-3 inline-flex min-w-[80px] justify-center rounded-full px-4 py-2 font-semibold',
                         {
