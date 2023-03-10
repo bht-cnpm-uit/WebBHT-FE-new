@@ -13,7 +13,9 @@ export default function FramerCounter({ from, to, duration, isOver }) {
             animate(from, to, {
                 duration,
                 onUpdate(value) {
-                    node.textContent = Math.floor(value);
+                    node.textContent = Math.floor(value)
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
                 },
             });
         }
