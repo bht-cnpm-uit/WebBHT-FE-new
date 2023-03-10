@@ -79,6 +79,17 @@ function toRoleRecord(raw) {
 
 /**
  *
+ * @param {Semester} semester
+ *
+ * @return {String} display
+ *
+ */
+function getYearDisplay(semester) {
+    return semester.index === 1 ? `${semester.start_year}` : `${semester.end_year}`;
+}
+
+/**
+ *
  * @param {Member[]} members
  *
  * @returns {Member[]} members
@@ -116,8 +127,8 @@ function processExtraFields(members) {
 
         // handle role titles by format 20<start_semester>-20<end_semester> <role_title> for each role
         member.role_titles = member.role_history.map((record) => {
-            const startYear = `20${record.start_semester.start_year}`;
-            const endYear = record.end_semester.index === 3 ? 'Hiện tại' : `20${record.end_semester.end_year}`; //TODO: language mapping
+            const startYear = `20${getYearDisplay(record.start_semester)}`;
+            const endYear = record.end_semester.index === 3 ? 'Hiện tại' : `20${getYearDisplay(record.end_semester)}`; //TODO: language mapping
             return `${startYear} - ${endYear}: ${roleTitleMap[record.role]}`;
         });
 
@@ -138,7 +149,7 @@ export function toMemberObjects(raws) {
         role_history: raw.role_history.map((rawRecord) => toRoleRecord(rawRecord)),
         school_year: +raw.school_year,
         image: getImageFromProperty(raw.images)
-    })));
+    })).filter((member) => member.school_year && member.school_year > 0));
 }
 
 /**
