@@ -58,7 +58,7 @@ async function fetchAccounts() {
     }
 }
 
-async function fetchData() {
+async function fetchData(categoryId) {
     try {
         const res = await fetch(`${process.env.NOTION_API}/databases/${process.env.BLOG_DB_ID}/query`, {
             method: 'POST',
@@ -74,6 +74,12 @@ async function fetchData() {
                         direction: 'descending',
                     },
                 ],
+                filter: categoryId && {
+                    property: 'categories',
+                    relation: {
+                        contains: categoryId,
+                    },
+                },
             }),
             cache: 'no-store',
         });
@@ -101,8 +107,11 @@ async function fetchData() {
     }
 }
 
-export default async function BlogList() {
-    const blogs = await fetchData();
+export default async function BlogList({ categoryId }) {
+    await new Promise((resolve, reject) => {
+        setTimeout(() => resolve(10), 5000);
+    });
+    const blogs = await fetchData(categoryId);
     return (
         <div className="px-p-body xs:px-0">
             <div className="mx-auto max-w-[800px] space-y-3 xs:space-x-5">
