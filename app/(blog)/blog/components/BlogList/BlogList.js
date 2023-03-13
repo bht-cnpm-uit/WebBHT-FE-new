@@ -1,5 +1,5 @@
 import { getImageFromProperty } from '~/utils/notionTool';
-import BlogCard from '../BlogCard';
+import BlogCard, { BlogCardSkeleton } from '../BlogCard';
 
 async function fetchCategories() {
     try {
@@ -107,16 +107,25 @@ async function fetchData(categoryId) {
     }
 }
 
+export function BlogListSkeleton() {
+    return (
+        <div className="px-p-body xs:px-0">
+            <div className="mx-auto max-w-[800px] space-y-3 xs:space-x-5">
+                {[1, 2, 3]?.map((index) => (
+                    <BlogCardSkeleton key={index} />
+                ))}
+            </div>
+        </div>
+    );
+}
+
 export default async function BlogList({ categoryId }) {
-    await new Promise((resolve, reject) => {
-        setTimeout(() => resolve(10), 5000);
-    });
     const blogs = await fetchData(categoryId);
     return (
         <div className="px-p-body xs:px-0">
             <div className="mx-auto max-w-[800px] space-y-3 xs:space-x-5">
-                {blogs?.map((blog) => (
-                    <BlogCard blog={blog} />
+                {blogs?.map((blog, index) => (
+                    <BlogCard key={index} blog={blog} />
                 ))}
             </div>
         </div>

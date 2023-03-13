@@ -42,6 +42,10 @@
         @apply mx-auto mb-4 max-w-5xl text-4xl font-bold text-text-dark;
     }
 
+    .skeleton {
+        @apply animate-pulse bg-slate-200 text-transparent dark:bg-slate-700;
+    }
+
     @keyframes pageLoaderLoaded {
         0% {
             opacity: 1;

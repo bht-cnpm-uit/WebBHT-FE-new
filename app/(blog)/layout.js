@@ -1,4 +1,5 @@
 import '~/styles/globals.css';
+import GetTheme from '../components/GetTheme';
 import NavigationProgess from '../components/NavigationProgess/NavigationProgess';
 import BlogHeader from './components/BlogHeader';
 
@@ -33,6 +34,7 @@ export default function Layout({ children }) {
             <body className="w-full overflow-hidden">
                 <NavigationProgess />
                 <BlogHeader />
+                <GetTheme />
                 <main className="mt-h-header-small">{children}</main>
                 <footer>FOOTER</footer>
             </body>

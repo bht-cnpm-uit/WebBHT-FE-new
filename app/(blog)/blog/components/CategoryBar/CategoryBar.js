@@ -34,6 +34,19 @@ async function fetchData() {
     }
 }
 
+export function CategoryBarSkeleton() {
+    return (
+        <div className="flex justify-center px-p-body">
+            <div className="-mx-2 flex max-w-[800px] flex-wrap items-center py-3">
+                <div className="skeleton m-1 inline-flex h-[40px] w-[80px] justify-center rounded-full font-semibold "></div>
+                <div className="skeleton m-1 inline-flex h-[40px] w-[80px] justify-center rounded-full font-semibold "></div>
+                <div className="skeleton m-1 inline-flex h-[40px] w-[80px] justify-center rounded-full font-semibold "></div>
+                <div className="skeleton m-1 inline-flex h-[40px] w-[80px] justify-center rounded-full font-semibold "></div>
+            </div>
+        </div>
+    );
+}
+
 export default async function CategoryBar() {
     const categories = await fetchData();
     return <CategoryBarClient categories={categories} />;
