@@ -58,7 +58,7 @@ async function fetchAccounts() {
     }
 }
 
-async function fetchData(categoryId) {
+async function fetchBlogs(categoryId) {
     try {
         const res = await fetch(`${process.env.NOTION_API}/databases/${process.env.BLOG_DB_ID}/query`, {
             method: 'POST',
@@ -84,8 +84,6 @@ async function fetchData(categoryId) {
             cache: 'no-store',
         });
         const data = await res.json();
-        const categories = await fetchCategories();
-        const accounts = await fetchAccounts();
         const blogsRaw = data?.results?.map((page) => ({
             id: page?.id?.split('-').join(''),
             title: page?.properties?.title?.title?.[0]?.plain_text,
@@ -95,6 +93,20 @@ async function fetchData(categoryId) {
             author: page?.properties?.author?.relation?.[0]?.id,
             createdAt: page?.properties?.createdAt?.created_time,
         }));
+        return blogsRaw;
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
+
+async function fetchData(categoryId) {
+    try {
+        const [categories, accounts, blogsRaw] = await Promise.all([
+            fetchCategories(),
+            fetchAccounts(),
+            fetchBlogs(categoryId),
+        ]);
         const blogs = blogsRaw?.map((blog) => ({
             ...blog,
             categories: categories?.filter((category) => blog.categories.includes(category.id)),
