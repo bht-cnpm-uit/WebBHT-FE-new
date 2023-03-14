@@ -1,4 +1,5 @@
 import moment from 'moment';
+import Link from 'next/link';
 
 export function BlogCardSkeleton() {
     return (
@@ -31,7 +32,7 @@ export function BlogCardSkeleton() {
 
 export default function BlogCard({ blog }) {
     return (
-        <div className="py-3">
+        <Link href={'/blog/' + blog.id} className="block cursor-pointer py-3">
             <div className="flex xs:flex-col-reverse">
                 <div className="flex-1 pr-3 xs:pr-p-body xs:pl-p-body xs:pt-3">
                     <div className="flex items-center">
@@ -61,6 +62,6 @@ export default function BlogCard({ blog }) {
                     />
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
