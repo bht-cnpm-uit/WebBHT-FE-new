@@ -1,3 +1,4 @@
+import ParseNotionPageContent from '~/app/components/ParseNotionPageContent';
 import { getImageFromProperty } from '~/utils/notionTool';
 
 async function fetchCategories() {
@@ -69,7 +70,6 @@ async function fetchBlog(id) {
             cache: 'no-store',
         });
         const page = await res.json();
-        console.log(page);
         const blogRaw = {
             id: page?.id?.split('-').join(''),
             title: page?.properties?.title?.title?.[0]?.plain_text,
@@ -86,14 +86,38 @@ async function fetchBlog(id) {
     }
 }
 
+async function fetchBlogContent(id) {
+    try {
+        const res = await fetch(`${process.env.NOTION_API}/blocks/${id}/children?page_size=1000`, {
+            method: 'GET',
+            headers: {
+                Authorization: 'Bearer ' + process.env.NOTION_TOKEN,
+                'Content-Type': 'application/json',
+                'Notion-Version': process.env.NOTION_VERSION,
+            },
+            cache: 'no-store',
+        });
+        const block = await res.json();
+        return block?.results || [];
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
+
 async function fetchData(id) {
     try {
-        const [categories, accounts, blogRaw] = await Promise.all([fetchCategories(), fetchAccounts(), fetchBlog(id)]);
-        // console.log(blogRaw);
+        const [categories, accounts, blogRaw, blogContent] = await Promise.all([
+            fetchCategories(),
+            fetchAccounts(),
+            fetchBlog(id),
+            fetchBlogContent(id),
+        ]);
         const blog = {
             ...blogRaw,
             categories: categories?.filter((category) => blogRaw.categories.includes(category.id)),
             author: accounts?.find((account) => account.id === blogRaw.author),
+            content: blogContent,
         };
         return blog;
     } catch (error) {
@@ -105,9 +129,10 @@ async function fetchData(id) {
 export default async function DetailBlogPage({ params }) {
     const blog = await fetchData(params.id);
     return (
-        <div>
-            <div className="mx-auto max-w-[800px] pt-10">
-                <h1 className="my-2 text-2xl font-bold text-text-dark">{blog.title}</h1>
+        <div className="px-p-body">
+            <div className="mx-auto max-w-[800px] pt-10 text-[17px]">
+                <h1 className="my-2 text-3xl font-bold text-text-dark">{blog.title}</h1>
+                <ParseNotionPageContent>{blog.content}</ParseNotionPageContent>
             </div>
         </div>
     );
