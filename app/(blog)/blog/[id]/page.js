@@ -1,3 +1,4 @@
+import moment from 'moment';
 import ParseNotionPageContent from '~/app/components/ParseNotionPageContent';
 import { getImageFromProperty } from '~/utils/notionTool';
 
@@ -130,8 +131,31 @@ export default async function DetailBlogPage({ params }) {
     const blog = await fetchData(params.id);
     return (
         <div className="px-p-body">
-            <div className="mx-auto max-w-[800px] pt-10 text-[17px]">
-                <h1 className="my-2 text-3xl font-bold text-text-dark">{blog.title}</h1>
+            <div className="mx-auto max-w-[800px] text-[17px]">
+                <div className="md:-mx-p-body">
+                    <img className="mb-6 aspect-[2/1] w-full object-cover" src={blog?.cover} />
+                </div>
+                <div className="mb-6">
+                    <div className="mb-3 flex items-center">
+                        <img className="h-10 w-10 rounded-full bg-bg-light object-cover" src={blog?.author?.avatar} />
+                        <p className="ml-3 font-semibold text-text-semidark">{blog?.author?.name}</p>
+                    </div>
+                    <h1 className="my-2 mb-3 text-4xl font-bold text-text-dark">{blog.title}</h1>
+                    <div className="mt-2 flex flex-wrap items-center">
+                        <div className="mr-3 flex items-center space-x-2">
+                            {blog?.categories?.map((category) => (
+                                <div
+                                    key={category?.id}
+                                    className="rounded-md bg-primary py-0.5 px-3 text-sm font-medium text-white"
+                                >
+                                    {category?.name}
+                                </div>
+                            ))}
+                        </div>
+                        <div className="">{moment(blog?.createdAt).format('DD/MM/YYYY')}</div>
+                    </div>
+                </div>
+                <hr className="my-3 dark:border-gray-800" />
                 <ParseNotionPageContent>{blog.content}</ParseNotionPageContent>
             </div>
         </div>
